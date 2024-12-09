@@ -1,0 +1,156 @@
+{% extends "ecom/homebase.html" %}
+{% block content %}
+{% load static %}
+
+
+<head>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> 
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<style media="screen">
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+.navbar-button {
+    background-color: #4057c0;
+    border: 1px solid #01070a;
+    border-radius: 0 10px 10px 0;
+    color: #565656;
+    padding: 15px 0;
+    height: 55px;
+    cursor: pointer;
+}
+.row1 {
+  text-align: right;
+}
+.cart-button {
+    /* background-color: #bfbfbf; */
+    background-color: yellowgreen;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
+    padding: 15px 20px 15px 20px;
+    text-align: center;
+    height: 55px;
+    border-radius: 2px;
+    font-size: larger;
+    font-weight: bolder;
+    width: 150px;
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    outline: none
+}
+</style>
+</head>
+
+<br><br><br><br>
+{% if messages %}
+    <div class="alert-messages" style="text-align: center;">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container">
+  <div class="panel panel-success">
+    <div class="panel-heading" >
+      <h6 style="text-align:center;" class="panel-title">My Cart</h6>
+    </div>
+    <table class="table table-hover table-bordered" id="dev-table" style="margin-top: -100px;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+
+      {% for p in products %}
+      {% if p %}
+      <tr>
+        <td> {{p.name}}</td>
+        <td>     
+          {% if p.product_image %}
+            <img src="{%  static p.product_image.url %}" alt="Profile Pic" height="50px" width="50px" />
+          {% else %}
+            <p>No image available</p>
+          {% endif %}
+        </td>
+        <td>Ksh {{p.price}}</td>
+        <td>{{p.description}}</td>
+
+        <td><a class="btn btn-danger btn-xs" href="{% url 'remove-from-cart' p.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+
+      </tr>
+      <br><br><br>
+      {%else%}
+     
+      <h1>No Products</h1>
+      {%endif%}
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<br><br><br>
+<div style="text-align: center;">
+  <button class="btn btn-danger btn-lg">Total Ksh {{total}}</button>
+  <a href="/customer-address"><button class="btn btn-success btn-lg" ><span>Purchase </span></button></a> 
+</div>
+
+
+<br><br><br><br><br>
+
+{% endblock content %}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+{% load static %}
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
+  <link rel="icon" href="{% static 'images/favicon.jpg' %}" type="image/x-icon">
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> 
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", sans-serif;
+}  
+   
+
+.column{
+  float: left; 
+  width: 50%;
+  margin-bottom: 10px; 
+  margin: 10px;
+  padding: 10px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.footer{
+      position: fixed;
+    }
+
+.intro {
+  font-size: large;
+}
+.logo img{
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+}
+.logo p{
+  text-decoration: cornflowerblue;
+  font-size: large;
+  color: grey;
+}
+  </style>
+</head>
+
+<body style="background-color:#f7f7f7;">
+  {%if request.user.is_authenticated%}
+     {% include "ecom/customer_navbar.html" %} 
+     <h3 style="text-align:center; color: #5b08f7; font-size: 40px"> Poncho Stores </h3>
+     <div class="container " style="background: wheat;">
+       <div class="row align-items-start">
+         <div class="col logo" style="width: 50%; float: left; padding-right: 20px;">
+           <img src="../../static/images/logo.JPG" alt="logo">    
+           <p><b>Our customer service team is always here to help you.</b> <br>
+           Send your orders at any time. <br>
+           You are our Priority, 
+           <i><b>Happy to serve you!!</b></i></p>    
+         </div>
+         <div class="col">
+           <P>
+             <h4 class="intro">Welcome to Poncho Stores!</h4>
+             
+             At Poncho Stores, we are passionate about providing high-quality products to help you live your best life. Whether you're looking for the latest in fashion, innovative gadgets, sports equipment, or anything in between, our carefully curated selection has something for everyone. Our goal is simple: to offer a seamless shopping experience with exceptional service, every time.
+             
+             <h4><b>Our Story</b></h4>
+             Founded in 2023, Poncho Stores started with a vision to create a space where customers could easily find quality products at affordable prices, delivered right to their doorsteps. We are driven by the belief that shopping should be fun, convenient, and inspiring. Our team works tirelessly to bring you the best in Shoes from trusted brands and emerging innovators alike.
+             
+             <h4><b>Why Shop With Us?</b></h4>
+             <i><b style="color: blue;">Wide Selection:</b></i> From Sneakers, Running shoes, sandals to Loafers, we offer an extensive range of products to suit every taste and need. <br>
+             <i><b style="color: blue;">Quality Assurance:</b></i> We partner with only the best manufacturers and suppliers, ensuring that every item in our store is made to last. <br>
+             <i><b style="color: blue;">Fast and Reliable Shipping:</b></i> We understand that you’re eager to receive your order, which is why we prioritize fast and reliable shipping options. Your satisfaction is our top priority.
+             <h4><b>Our Mission</b></h4>
+             <i>We believe in making shopping more than just a transaction — it's an experience. Our mission is to inspire confidence in every purchase by offering top-notch customer service, superior products, and a platform that makes shopping enjoyable.</i> <br>
+             <h4><b>Our Vision</b></h4>
+             <i>We aim to be your go-to destination for all your Shoes needs, providing you with a personal, stress-free shopping journey from start to finish.</i> <br><br>
+             
+             Thank You for Choosing Us,
+             Thank you for trusting Poncho Stores with your shopping needs. We’re excited to have you as part of our growing family, and we look forward to serving you for years to come. <br><br><br>
+             <p style="color: blue; font-size: large;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Feel free to contact us with any questions or feedback. We’re always here to help!</p>
+           </P>       
+         </div>
+       </div>
+     </div>
+  {%else%}
+    {% include "ecom/navbar.html" %}
+    <h3 style="text-align:center; color: #5b08f7; font-size: 40px"> Poncho Stores </h3>
+    <div class="container " style="background: wheat;">
+      <div class="row align-items-start">
+        <div class="col logo">
+          <img src="../../static/images/logo.JPG" alt="">    
+          <p><b>Our customer service team is always here to help you.</b> <br>
+          Send your orders at any time. <br>
+          You are our Priority, 
+          <i><b>Happy to serve you!!</b></i></p>    
+        </div>
+        <div class="col">
+          <P class="c">
+            <h4 class="intro">Welcome to Poncho Stores!</h4>
+            
+            At Poncho Stores, we are passionate about providing high-quality products to help you live your best life. Whether you're looking for the latest in fashion, innovative gadgets, sports equipment, or anything in between, our carefully curated selection has something for everyone. Our goal is simple: to offer a seamless shopping experience with exceptional service, every time.
+            
+            <h4><b>Our Story</b></h4>
+            Founded in 2023, Poncho Stores started with a vision to create a space where customers could easily find quality products at affordable prices, delivered right to their doorsteps. We are driven by the belief that shopping should be fun, convenient, and inspiring. Our team works tirelessly to bring you the best in Shoes from trusted brands and emerging innovators alike.
+            
+            <h4><b>Why Shop With Us?</b></h4>
+            <i><b style="color: blue;">Wide Selection:</b></i> From Sneakers, Running shoes, sandals to Loafers, we offer an extensive range of products to suit every taste and need. <br>
+            <i><b style="color: blue;">Quality Assurance:</b></i> We partner with only the best manufacturers and suppliers, ensuring that every item in our store is made to last. <br>
+            <i><b style="color: blue;">Fast and Reliable Shipping:</b></i> We understand that you’re eager to receive your order, which is why we prioritize fast and reliable shipping options. Your satisfaction is our top priority.
+            <h4><b>Our Mission</b></h4>
+            <i>We believe in making shopping more than just a transaction — it's an experience. Our mission is to inspire confidence in every purchase by offering top-notch customer service, superior products, and a platform that makes shopping enjoyable.</i> <br>
+            <h4><b>Our Vision</b></h4>
+            <i>We aim to be your go-to destination for all your Shoes needs, providing you with a personal, stress-free shopping journey from start to finish.</i> <br><br>
+            
+            Thank You for Choosing Us,
+            Thank you for trusting Poncho Stores with your shopping needs. We’re excited to have you as part of our growing family, and we look forward to serving you for years to come. <br><br><br>
+            <p style="color: blue; font-size: large;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Feel free to contact us with any questions or feedback. We’re always here to help!</p>
+          </P>       
+        </div>
+      </div>
+    </div>
+  {%endif%}
+  <br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include "ecom/footer.html" %}
+
+</body>
+
+</html>
